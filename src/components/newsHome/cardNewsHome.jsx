@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 export default function CardNewsHome() {
   return (
-    <article className="max-w-[780px] w-full flex gap-5">
+    <Link href="#" className="max-w-[780px] w-full flex gap-5">
       <article className="w-[50%] max-h-[254px]">
         <img
           className="w-full h-full object-cover rounded-[20px]"
@@ -24,6 +26,6 @@ export default function CardNewsHome() {
           laborum officiis dignissimos!
         </p>
       </article>
-    </article>
+    </Link>
   );
 }
