@@ -2,15 +2,18 @@ import Link from "next/link";
 
 export default function CardNewsHome() {
   return (
-    <Link href="#" className="max-w-[780px] w-full flex gap-5">
-      <article className="w-[50%] max-h-[254px]">
+    <Link
+      href="#"
+      className="max-w-[780px] w-full flex gap-5  max-sm:flex-col  max-lg:max-w-full"
+    >
+      <article className="w-[50%] max-h-[254px] max-md:w-full">
         <img
           className="w-full h-full object-cover rounded-[20px]"
           src="https://source.unsplash.com/random/1"
           alt="Imagem da notícia"
         />
       </article>
-      <article className="w-[50%]">
+      <article className="w-[50%] max-md:w-full">
         <h2 className="text-2xl font-bold">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </h2>

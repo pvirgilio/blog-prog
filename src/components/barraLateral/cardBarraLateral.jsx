@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function CardBarraLateral() {
   return (
     <Link href="#" className="flex gap-2">
-      <article className="w-[50%] max-h-[94px]">
+      <article className="w-[50%] max-h-[94px] ">
         <img
           className="w-full h-full object-cover rounded-md"
           src="https://source.unsplash.com/random/6"

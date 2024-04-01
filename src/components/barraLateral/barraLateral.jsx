@@ -5,7 +5,7 @@ import Categorias from "./categorias";
 
 export default function BarraLateral() {
   return (
-    <div className="relative min-h-screen w-[30%]">
+    <div className="relative min-h-screen w-[30%] max-lg:hidden">
       <aside className="sticky top-20 right-0  flex flex-col gap-5 mt-[100px] border-l border-r px-4">
         <article className="flex flex-col gap-5 ">
           <h3 className="text-xl font-bold uppercase">mais vistos</h3>

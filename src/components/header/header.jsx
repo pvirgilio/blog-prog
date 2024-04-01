@@ -9,7 +9,7 @@ export default function Header() {
         <div className="">
           <h1 className="font-bold text-2xl">Logo</h1>
         </div>
-        <ul className="flex items-center gap-12">
+        <ul className="flex items-center gap-12 max-lg:hidden">
           <li>
             <Link className="font-medium" href="#">
               Home

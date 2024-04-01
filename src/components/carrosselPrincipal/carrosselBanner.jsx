@@ -50,7 +50,7 @@ export default function CarrosselBanner() {
           <div className=" absolute z-40 w-full h-[250px] bottom-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-md text-left text-white pt-5 ">
             <div className="w-full container flex flex-col gap-5  ">
               <h1 className="text-4xl font-bold">Lorem ipsum dolor sit amet</h1>
-              <p className="">
+              <p className=" max-w-[300px] w-full">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
                 eget nunc nec purus ultricies aliquet.
               </p>

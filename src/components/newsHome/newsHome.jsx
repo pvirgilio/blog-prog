@@ -3,9 +3,9 @@ import CardNewsHome from "./cardNewsHome";
 
 export default function NewsHome() {
   return (
-    <section className=" container flex w-full gap-10 mt-[60px]">
+    <section className=" container flex w-full gap-10 mt-[60px] max-lg:block">
       <article className="flex gap-5">
-        <article className="flex flex-col gap-[60px]  w-[70%]">
+        <article className="flex flex-col gap-[60px]  w-[70%] max-lg:w-full">
           <h1 className="text-3xl font-bold">Últimas notícias</h1>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-[40px]">

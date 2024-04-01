@@ -1,9 +1,9 @@
 export default function BannerHome() {
   return (
-    <section className="container w-full h-[600px] flex mt-[80px] gap-5">
-      <article className="w-1/2 flex flex-col gap-5">
+    <section className="container w-full h-[700px] flex mt-[80px] gap-5 max-lg:flex-col-reverse max-md:h-[850px]">
+      <article className="w-1/2 flex flex-col gap-5  max-lg:w-full max-lg:flex-row max-md:flex-col ">
         <article
-          className="w-full h-1/2 rounded-xl text-white "
+          className="w-full h-1/2 rounded-xl text-white max-lg:h-full "
           style={{
             backgroundImage: "url('https://source.unsplash.com/random/1')",
             backgroundSize: "cover",
@@ -26,7 +26,7 @@ export default function BannerHome() {
           </article>
         </article>
         <article
-          className=" w-full h-1/2 rounded-xl "
+          className=" w-full h-1/2 rounded-xl max-lg:h-full"
           style={{
             backgroundImage: "url('https://source.unsplash.com/random/2')",
             backgroundSize: "cover",
@@ -50,7 +50,7 @@ export default function BannerHome() {
         </article>
       </article>
       <article
-        className="w-1/2 h-full rounded-xl flex items-center justify-center "
+        className="w-1/2 h-full rounded-xl flex items-center justify-center max-lg:w-full"
         style={{
           backgroundImage: "url('https://source.unsplash.com/random/2')",
           backgroundSize: "cover",
