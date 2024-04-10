@@ -2,6 +2,7 @@ import { Familjen_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
 import { register } from "swiper/element/bundle";
+import Footer from "@/components/footer/footer";
 // register Swiper custom elements
 register();
 const grotesk = Familjen_Grotesk({ subsets: ["latin"] });
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body className={grotesk.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

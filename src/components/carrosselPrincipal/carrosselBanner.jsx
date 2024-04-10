@@ -28,7 +28,7 @@ export default function CarrosselBanner() {
   return (
     <section className=" w-full ">
       <Swiper
-        className="swiper-container relative flex justify-center h-[750px] "
+        className="swiper-container relative flex justify-center h-[92vh] "
         modules={[Navigation, Pagination]}
         slidesPerView={1}
         pagination={{ clickable: true }}

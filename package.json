@@ -14,10 +14,13 @@
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "express": "^4.19.2",
+    "gsap": "^3.12.5",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "scrollreveal": "^4.0.9",
     "swiper": "^11.1.0",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7"
@@ -26,6 +29,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+    "nodemon": "^3.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0"
   }

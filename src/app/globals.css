@@ -73,4 +73,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  @media print {
+    header {
+      position: fixed !important;
+    }
+  }
 }
