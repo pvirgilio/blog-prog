@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/header";
 import { register } from "swiper/element/bundle";
 import Footer from "@/components/footer/footer";
+import { NoticiasProvider } from "@/components/context/noticias";
 // register Swiper custom elements
 register();
 const grotesk = Familjen_Grotesk({ subsets: ["latin"] });
@@ -15,10 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={grotesk.className}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={`${grotesk.className} `}>
+        <NoticiasProvider>
+          <Header />
+          {children}
+          <Footer />
+        </NoticiasProvider>
       </body>
     </html>
   );

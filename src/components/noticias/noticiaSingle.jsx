@@ -1,3 +1,8 @@
+"use client";
+import Image from "next/image";
+import { useContext, useEffect } from "react";
+import { NoticiasContext } from "../context/noticias";
+import { useParams } from "next/navigation";
 export default function NoticiaSingle() {
   return (
     <section className="w-full  mt-10 flex flex-col gap-5 ">
@@ -12,10 +17,12 @@ export default function NoticiaSingle() {
         </div>
       </div>
       <article className="w-full max-h-[550px] max-md:w-full">
-        <img
+        <Image
           className="w-full h-full object-cover rounded-md"
           src="https://source.unsplash.com/random/1"
           alt="Imagem da notícia"
+          width={780}
+          height={550}
         />
       </article>
       <div className="text-lg">

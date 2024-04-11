@@ -4,8 +4,8 @@ import NoticiaSingle from "@/components/noticias/noticiaSingle";
 
 export default function NewsSingle() {
   return (
-    <main className="w-full container flex justify-between ">
-      <section className="w-[70%] flex flex-col gap-20">
+    <main className="w-full  container flex justify-between max-lg:flex-col ">
+      <section className="w-full flex flex-col gap-20">
         <NoticiaSingle />
         <ComentSingle />
       </section>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { NoticiasContext } from "../context/noticias";
-export default function CardNewsHome(props) {
+export default function CardNewsNoticia(props) {
   const { noticias, getNoticias } = useContext(NoticiasContext);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function CardNewsHome(props) {
   }, [noticias]);
 
   return (
-    <article className="flex gap-10 flex-wrap  ">
+    <article className="grid grid-cols-2 ">
       {noticias.map((item, index) => {
         return (
           <article
@@ -47,7 +47,7 @@ export default function CardNewsHome(props) {
               <p className="font-medium text-[#4F4F4F]  text-base">
                 {item.content
                   ? item.content.length > 100
-                    ? item.content.substring(0, 250) + "..."
+                    ? item.content.substring(0, 150) + "..."
                     : item.content
                   : "Conteúdo da notícia"}
               </p>

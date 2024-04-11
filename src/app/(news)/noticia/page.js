@@ -1,22 +1,12 @@
 import CardNewsHome from "@/components/newsHome/cardNewsHome";
+import NoticiasGeral from "@/components/noticias/noticiasGeral";
 import { Pagination } from "@/components/ui/pagination";
 
 export default function Noticias() {
   return (
-    <main className="container flex flex-col gap-5 my-10">
+    <main className="container min-h-screen flex flex-col gap-5 my-10">
       <h1 className="text-3xl font-semibold">Noticias</h1>
-      <section className=" grid grid-cols-2 gap-10">
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-        <CardNewsHome />
-      </section>
-      <Pagination />
+      <NoticiasGeral />
     </main>
   );
 }
