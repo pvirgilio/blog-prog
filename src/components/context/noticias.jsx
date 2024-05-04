@@ -9,6 +9,19 @@ export const NoticiasProvider = ({ children }) => {
   async function getNoticias() {
     const res = await fetch(`${apiBase}/noticias`);
 
+    // Erro dev api
+    if (!res.ok) {
+      throw new Error(`Erro ao buscar notícias: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  }
+
+  async function getNoticiasId(id) {
+    const res = await fetch(`${apiBase}/noticias/${id}`);
+
+    // Erro dev api
     if (!res.ok) {
       throw new Error(`Erro ao buscar notícias: ${res.status}`);
     }
@@ -43,6 +56,7 @@ export const NoticiasProvider = ({ children }) => {
       value={{
         getNoticias,
         noticias,
+        getNoticiasId,
       }}
     >
       {children}

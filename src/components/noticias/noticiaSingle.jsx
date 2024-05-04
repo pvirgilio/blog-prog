@@ -1,87 +1,44 @@
 "use client";
 import Image from "next/image";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NoticiasContext } from "../context/noticias";
 import { useParams } from "next/navigation";
-export default function NoticiaSingle() {
-  return (
-    <section className="w-full  mt-10 flex flex-col gap-5 ">
+export default function NoticiaSingle(props) {
+  const { getNoticiasId, setNoticiasId } = useContext(NoticiasContext);
+  const { id } = useParams();
+  const [newsId, setNewsId] = useState([]);
+  useEffect(() => {
+    async function fetchNewsId() {
+      const data = await getNoticiasId(id);
+      setNewsId(data);
+      console.log("🚀 ~ fetchNewsId ~ data:", data);
+    }
+    fetchNewsId();
+  }, []);
+  // const { title, date, posted, content, imageSrc } = props;
+  return newsId.map((item, index) => (
+    <section key={index} className="w-full  mt-10 flex flex-col gap-5 ">
       <div className="flex flex-col gap-3">
-        <h1 className="text-2xl font-semibold ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, nulla
-          doloribus maxime
-        </h1>
+        <h1 className="text-2xl font-semibold ">{item.title}</h1>
         <div className="w-full flex items-center justify-between">
-          <span className="text-gray-400 text-sm">18 de março</span>
-          <span className="text-gray-400 text-sm">Postado há 2 horas</span>
+          <span className="text-gray-400 text-sm">
+            {item.created_at || "Data de postagem"}
+          </span>
+          {/* <span className="text-gray-400 text-sm">{posted}</span> */}
         </div>
       </div>
       <article className="w-full max-h-[550px] max-md:w-full">
         <Image
           className="w-full h-full object-cover rounded-md"
-          src="https://source.unsplash.com/random/1"
+          src={item.imageSrc || "https://source.unsplash.com/random/2"}
           alt="Imagem da notícia"
           width={780}
           height={550}
         />
       </article>
-      <div className="text-lg">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          cupiditate atque corporis nemo, mollitia odio consequuntur et
-          similique iure ratione aperiam asperiores cum eaque vel aliquid
-          tempore dignissimos corrupti. Magnam? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Fugiat quam nisi debitis? Voluptate,
-          ratione suscipit! Unde sint cumque, saepe atque exercitationem, alias
-          aut ut ullam eius minima quidem nam aperiam! Lorem, ipsum dolor sit
-          amet consectetur adipisicing elit. Minima nulla ullam praesentium
-          obcaecati fuga, asperiores quod magnam officia officiis, optio
-          consequatur id omnis, et tempora incidunt possimus debitis neque
-          nesciunt. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Nemo tempore dignissimos sunt ducimus. Asperiores sapiente labore,
-          saepe delectus eius soluta esse ipsa ratione. Commodi enim nemo,
-          eligendi minima earum nihil! Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Quibusdam cupiditate atque corporis nemo, mollitia
-          odio consequuntur et similique iure ratione aperiam asperiores cum
-          eaque vel aliquid tempore dignissimos corrupti. Magnam? Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Fugiat quam nisi debitis?
-          Voluptate, ratione suscipit! Unde sint cumque, saepe atque
-          exercitationem, alias aut ut ullam eius minima quidem nam aperiam!
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima nulla
-          ullam praesentium obcaecati fuga, asperiores quod magnam officia
-          officiis, optio consequatur id omnis, et tempora incidunt possimus
-          debitis neque nesciunt. Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Nemo tempore dignissimos sunt ducimus. Asperiores
-          sapiente labore, saepe delectus eius soluta esse ipsa ratione. Commodi
-          enim nemo, eligendi minima earum nihil! Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quibusdam cupiditate atque corporis
-          nemo, mollitia odio consequuntur et similique iure ratione aperiam
-          asperiores cum eaque vel aliquid tempore dignissimos corrupti. Magnam?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quam
-          nisi debitis? Voluptate, ratione suscipit! Unde sint cumque, saepe
-          atque exercitationem, alias aut ut ullam eius minima quidem nam
-          aperiam! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Minima nulla ullam praesentium obcaecati fuga, asperiores quod magnam
-          officia officiis, optio consequatur id omnis, et tempora incidunt
-          possimus debitis neque nesciunt. Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Nemo tempore dignissimos sunt ducimus.
-          Asperiores sapiente labore, saepe delectus eius soluta esse ipsa
-          ratione. Commodi enim nemo, eligendi minima earum nihil! Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Quibusdam cupiditate
-          atque corporis nemo, mollitia odio consequuntur et similique iure
-          ratione aperiam asperiores cum eaque vel aliquid tempore dignissimos
-          corrupti. Magnam? Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Fugiat quam nisi debitis? Voluptate, ratione suscipit! Unde sint
-          cumque, saepe atque exercitationem, alias aut ut ullam eius minima
-          quidem nam aperiam! Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Minima nulla ullam praesentium obcaecati fuga,
-          asperiores quod magnam officia officiis, optio consequatur id omnis,
-          et tempora incidunt possimus debitis neque nesciunt. Lorem ipsum
-          dolor, sit amet consectetur adipisicing elit. Nemo tempore dignissimos
-          sunt ducimus. Asperiores sapiente labore, saepe delectus eius soluta
-          esse ipsa ratione. Commodi enim nemo, eligendi minima earum nihil!
-        </p>
+      <div className="text-xl text-justify leading-8">
+        <p>{item.content}</p>
       </div>
     </section>
-  );
+  ));
 }

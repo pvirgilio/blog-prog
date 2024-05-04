@@ -12,10 +12,8 @@ export default function NoticiasGeral() {
     console.log("🚀 ~ getNoticias ~ noticias:", noticias);
   }, [noticias]);
   return (
-    <section>
+    <section className="flex items-start">
       <CardNewsNoticia />
-
-      <Pagination />
     </section>
   );
 }

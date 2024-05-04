@@ -10,7 +10,6 @@ export default function Home() {
     <main>
       <CarrosselBanner />
 
-      <NewsHome />
       <BannerHome />
       <Newsletter />
     </main>

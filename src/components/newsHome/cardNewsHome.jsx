@@ -3,9 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { NoticiasContext } from "../context/noticias";
+import { useParams } from "next/navigation";
 export default function CardNewsHome(props) {
   const { noticias, getNoticias } = useContext(NoticiasContext);
-
+  const id = useParams();
   useEffect(() => {
     console.log("🚀 ~ getNoticias ~ noticias:", noticias);
   }, [noticias]);
@@ -14,9 +15,9 @@ export default function CardNewsHome(props) {
     <article className="flex gap-10 flex-wrap  ">
       {noticias.map((item, index) => {
         return (
-          <article
+          <Link
             key={index}
-            href="#"
+            href={`/noticia/${item.id}`}
             className="max-w-[780px] w-full flex  gap-5  max-sm:flex-col  max-lg:max-w-full"
           >
             <article className="w-[50%] h-[254px] max-md:w-full">
@@ -55,7 +56,7 @@ export default function CardNewsHome(props) {
                 Ler mais
               </Link>
             </article>
-          </article>
+          </Link>
         );
       })}
     </article>
