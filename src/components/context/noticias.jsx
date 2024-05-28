@@ -7,7 +7,7 @@ export const NoticiasProvider = ({ children }) => {
   var apiBase = "http://localhost:3333";
 
   async function getNoticias() {
-    const res = await fetch(`${apiBase}/noticias`);
+    const res = await fetch(`${apiBase}/news`);
 
     // Erro dev api
     if (!res.ok) {
@@ -19,7 +19,7 @@ export const NoticiasProvider = ({ children }) => {
   }
 
   async function getNoticiasId(id) {
-    const res = await fetch(`${apiBase}/noticias/${id}`);
+    const res = await fetch(`${apiBase}/news/${id}`);
 
     // Erro dev api
     if (!res.ok) {

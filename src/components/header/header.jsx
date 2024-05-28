@@ -33,7 +33,6 @@ export default function Header() {
         </ul>
         <div className="flex items-center gap-5">
           <IoSearch size={27} />
-          <FaUserAlt size={27} />
         </div>
       </nav>
     </header>
