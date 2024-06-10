@@ -14,10 +14,11 @@ const getAllNews = async () => {
 };
 
 //* Function to post news
-const postNews = async (author, title, content, buttonText) => {
+const postNews = async (author, title, content, buttonText, image) => {
   try {
     const news = await connection.query(
-      ` INSERT INTO news (author, title, content, buttonText) VALUES ('${author}', '${title}', '${content}', '${buttonText}')`
+      "INSERT INTO news (author, title, content, buttonText, image) VALUES (?, ?, ?, ?, ?)",
+      [author, title, content, buttonText, image]
     );
     return news;
   } catch (error) {

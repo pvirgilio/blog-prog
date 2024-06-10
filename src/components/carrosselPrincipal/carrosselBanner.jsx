@@ -40,7 +40,7 @@ export default function CarrosselBanner() {
       >
         <SwiperSlide
           style={{
-            backgroundImage: "url('https://source.unsplash.com/random')",
+            backgroundImage: "url('https://via.placeholder.com/780x550')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -64,7 +64,7 @@ export default function CarrosselBanner() {
 
         <SwiperSlide
           style={{
-            backgroundImage: "url('https://source.unsplash.com/random')",
+            backgroundImage: "url('https://via.placeholder.com/780x550')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

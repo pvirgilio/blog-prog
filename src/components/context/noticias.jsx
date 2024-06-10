@@ -7,7 +7,10 @@ export const NoticiasProvider = ({ children }) => {
   var apiBase = "http://localhost:3333";
 
   async function getNoticias() {
-    const res = await fetch(`${apiBase}/news`);
+    const res = await fetch(`${apiBase}/news`, {
+      cache: "no-store",
+      method: "GET",
+    });
 
     // Erro dev api
     if (!res.ok) {
@@ -19,7 +22,10 @@ export const NoticiasProvider = ({ children }) => {
   }
 
   async function getNoticiasId(id) {
-    const res = await fetch(`${apiBase}/news/${id}`);
+    const res = await fetch(`${apiBase}/news/${id}`, {
+      cache: "no-store",
+      method: "GET",
+    });
 
     // Erro dev api
     if (!res.ok) {

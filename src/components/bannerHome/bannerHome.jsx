@@ -5,7 +5,7 @@ export default function BannerHome() {
         <article
           className="w-full h-1/2 rounded-xl text-white max-lg:h-full "
           style={{
-            backgroundImage: "url('https://source.unsplash.com/random/1')",
+            backgroundImage: "url('https://via.placeholder.com/780x550')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -28,7 +28,7 @@ export default function BannerHome() {
         <article
           className=" w-full h-1/2 rounded-xl max-lg:h-full"
           style={{
-            backgroundImage: "url('https://source.unsplash.com/random/2')",
+            backgroundImage: "url('https://via.placeholder.com/780x550')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -52,7 +52,7 @@ export default function BannerHome() {
       <article
         className="w-1/2 h-full rounded-xl flex items-center justify-center max-lg:w-full"
         style={{
-          backgroundImage: "url('https://source.unsplash.com/random/2')",
+          backgroundImage: "url('https://via.placeholder.com/780x550')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

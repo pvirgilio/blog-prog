@@ -30,7 +30,7 @@ export default function NoticiaSingle(props) {
       <article className="w-full max-h-[550px] max-md:w-full">
         <Image
           className="w-full h-full object-cover rounded-md"
-          src={item.imageSrc || "https://source.unsplash.com/random/2"}
+          src={item.imageSrc || "https://via.placeholder.com/780x550"}
           alt="Imagem da notícia"
           width={780}
           height={550}

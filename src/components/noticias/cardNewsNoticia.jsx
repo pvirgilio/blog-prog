@@ -24,7 +24,7 @@ export default function CardNewsNoticia(props) {
               <article className="w-[50%] h-[254px] max-md:w-full">
                 <Image
                   className="w-full h-full object-cover rounded-[20px]"
-                  src="https://source.unsplash.com/random/2"
+                  src="https://via.placeholder.com/780x254"
                   alt="Imagem da notícia"
                   loading="lazy"
                   width={780}

@@ -6,7 +6,7 @@ export default function CardBarraLateral() {
       <article className="w-[50%] max-h-[94px] ">
         <img
           className="w-full h-full object-cover rounded-md"
-          src="https://source.unsplash.com/random/6"
+          src="https://via.placeholder.com/780x550"
           alt=""
         />
       </article>

@@ -4,6 +4,8 @@ const {
   deleteNews,
   verifyId,
 } = require("../models/newsModel");
+const fs = require("fs");
+const path = require("path");
 
 async function showAllNews(req, res) {
   const news = await getAllNews();
@@ -11,9 +13,33 @@ async function showAllNews(req, res) {
 }
 
 async function postAllNews(req, res) {
-  const { author, title, content, buttonText } = req.body;
+  const { author, title, content, buttonText, image } = req.body;
+  const base64Data = image.replace(/^data:([A-Za-z-+/]+);base64,/, "");
+  const matches = image.match(/^data:image\/([A-Za-z-+\/]+);base64,/);
+  const extension = matches[1];
+
+  //* Gera um nome de arquivo único para a imagem
+  const filename = new Date().getTime() + "." + extension;
+
+  //* O diretório para uploads
+  const dir = path.resolve(__dirname, "..", "uploads");
+
+  //* O caminho do arquivo
+  const filepath = path.resolve(dir, filename);
+
+  //* Cria o diretório se ele não existir
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  //* Escreve o arquivo
+  fs.writeFileSync(filepath, base64Data, { encoding: "base64" });
+
   console.log("Notícias", author, title, content, buttonText);
-  const news = await postNews(author, title, content, buttonText);
+
+  //* Aqui, passamos apenas o nome do arquivo para a função postNews
+  const news = await postNews(author, title, content, buttonText, filename);
+
   res.status(200).json({ news, message: "Notícia postada com sucesso!" });
 }
 
