@@ -8,27 +8,49 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { NoticiasContext } from "../context/noticias";
+import Image from "next/image";
 
 export default function CarrosselBanner() {
+  // useEffect(() => {
+  //   const swiperEl = document.querySelector(".swiper-container");
+  //   const buttonElNext = document.querySelector(".nextButton");
+  //   const buttonElPrev = document.querySelector(".prevButton");
+
+  //   buttonElNext.addEventListener("click", () => {
+  //     swiperEl.swiper.slideNext();
+  //   });
+
+  //   buttonElPrev.addEventListener("click", () => {
+  //     swiperEl.swiper.slidePrev();
+  //   });
+  // });
+
+  const { noticias, getNoticias } = useContext(NoticiasContext);
+  const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const swiperEl = document.querySelector(".swiper-container");
-    const buttonElNext = document.querySelector(".nextButton");
-    const buttonElPrev = document.querySelector(".prevButton");
-
-    buttonElNext.addEventListener("click", () => {
-      swiperEl.swiper.slideNext();
-    });
-
-    buttonElPrev.addEventListener("click", () => {
-      swiperEl.swiper.slidePrev();
-    });
-  });
+    async function fetchNews() {
+      try {
+        const data = await getNoticias();
+        console.log("🚀 ~ fetchNews ~ data:", data);
+        setNews(data.news);
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchNews();
+  }, []);
   return (
     <section className=" w-full ">
       <Swiper
-        className="swiper-container relative flex justify-center h-[92vh] "
+        className="swiper-container relative flex justify-center h-[500px] "
         modules={[Navigation, Pagination]}
         slidesPerView={1}
         pagination={{ clickable: true }}
@@ -38,61 +60,32 @@ export default function CarrosselBanner() {
           disableOnInteraction: false,
         }}
       >
-        <SwiperSlide
-          style={{
-            backgroundImage: "url('https://via.placeholder.com/780x550')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          className="flex flex-col items-center"
-        >
-          <div className=" absolute z-40 w-full h-[250px] bottom-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-md text-left text-white pt-5 ">
-            <div className="w-full container flex flex-col gap-5  ">
-              <h1 className="text-4xl font-bold">Lorem ipsum dolor sit amet</h1>
-              <p className=" max-w-[300px] w-full">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                eget nunc nec purus ultricies aliquet.
-              </p>
-              <div className="flex items-center justify-between gap-3 bg-white text-black p-3 rounded-md max-w-[150px]">
-                <button className=" font-semibold ">Saiba mais</button>
-                <FaArrowRight />
+        {news.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="w-full h-[500px] relative">
+              <Image
+                src={
+                  item.image
+                    ? `http://localhost:3333/uploads/${item.image}`
+                    : "https://via.placeholder.com/780x254"
+                }
+                alt={item.title}
+                layout="fill"
+                objectFit="cover"
+              />
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black to-transparent flex items-center justify-center">
+                <div className="container text-white text-start">
+                  <h1 className="text-4xl font-bold">
+                    {item.title || "Título da notícia"}
+                  </h1>
+                  <p className="text-lg mt-10 text-gray-300">
+                    {item.content.substring(0, 200)}...
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide
-          style={{
-            backgroundImage: "url('https://via.placeholder.com/780x550')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          className="flex flex-col items-center"
-        >
-          <div className=" absolute z-40 w-full h-[250px] bottom-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-md text-left text-white pt-5 px-10">
-            <div className="w-full container flex flex-col gap-5  ">
-              <h1 className="text-4xl font-bold">Lorem ipsum dolor sit amet</h1>
-              <p className="">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                eget nunc nec purus ultricies aliquet.
-              </p>
-              <div className="flex items-center justify-between gap-3 bg-white text-black p-3 rounded-md max-w-[150px]">
-                <button className=" font-semibold ">Saiba mais</button>
-                <FaArrowRight />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <div className="absolute z-50 bottom-[80px] right-4 flex flex-col gap-2">
-          <div className="nextButton bg-black bg-opacity-30 rounded-md p-2">
-            <GrNext color="white" className="" size={25} />
-          </div>
-          <div className="prevButton bg-black bg-opacity-30 rounded-md p-2">
-            <GrPrevious color="white" className="" size={25} />
-          </div>
-        </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

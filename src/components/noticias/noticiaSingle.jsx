@@ -10,34 +10,42 @@ export default function NoticiaSingle(props) {
   useEffect(() => {
     async function fetchNewsId() {
       const data = await getNoticiasId(id);
-      setNewsId(data);
       console.log("🚀 ~ fetchNewsId ~ data:", data);
+      setNewsId(data.news);
     }
     fetchNewsId();
   }, []);
   // const { title, date, posted, content, imageSrc } = props;
   return newsId.map((item, index) => (
-    <section key={index} className="w-full  mt-10 flex flex-col gap-5 ">
+    <section key={index} className="w-full  mt-20 flex flex-col gap-5 ">
       <div className="flex flex-col gap-3">
-        <h1 className="text-2xl font-semibold ">{item.title}</h1>
+        <h1 className="text-4xl font-semibold ">{item.title}</h1>
         <div className="w-full flex items-center justify-between">
-          <span className="text-gray-400 text-sm">
-            {item.created_at || "Data de postagem"}
+          <span className="font-medium text-gray-400 text-sm">
+            Data de postagem:{" "}
+            {new Date(item.created_at).toLocaleDateString("pt-BR")}
           </span>
-          {/* <span className="text-gray-400 text-sm">{posted}</span> */}
+          <span className="text-gray-200 text-sm">
+            Postado por: {item.author || "Autor da postagem"}
+          </span>
         </div>
       </div>
       <article className="w-full max-h-[550px] max-md:w-full">
-        <Image
+        <img
           className="w-full h-full object-cover rounded-md"
-          src={item.imageSrc || "https://via.placeholder.com/780x550"}
+          src={
+            item.image
+              ? `http://localhost:3333/uploads/${item.image}`
+              : "https://via.placeholder.com/780x254"
+          }
           alt="Imagem da notícia"
-          width={780}
-          height={550}
         />
       </article>
-      <div className="text-xl text-justify leading-8">
-        <p>{item.content}</p>
+
+      <div className=" text-justify leading-8">
+        <p className="text-black font-medium text-[22px] leading-8">
+          {item.content}
+        </p>
       </div>
     </section>
   ));

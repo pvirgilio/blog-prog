@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
-      <body className={`${grotesk.className} `}>
+      <body className={`${grotesk.className} bg-gray-100 `}>
         <NoticiasProvider>
           <Header />
           {children}
